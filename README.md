@@ -46,7 +46,7 @@ node dist/cli.js doctor
 ## Install The Agent Skill
 
 ```sh
-npx skills add AndreiMoraru123/rice --skill rice
+npx skills add AndreiMoraru123/rice
 ```
 
 The skill lives at:
@@ -55,21 +55,18 @@ The skill lives at:
 skills/rice/SKILL.md
 ```
 
+Use `--skill rice` if this repo ever contains multiple skills and you only want this one.
+
 ## Commands
 
 ```sh
-rice doctor
-rice inventory
+rice doctor          # check whether this machine is ready to be managed
+rice inventory       # detect OS, tools, apps, and config repos
 rice inventory --json
 rice inventory --save
-rice init
-rice status
+rice init            # create initial local rice state interactively
+rice status          # show saved local rice state
 ```
-
-- `doctor`: check whether the machine is ready to be managed by `rice`
-- `inventory`: detect OS, WSL, package managers, shells, terminals, editors, browsers, window managers, launchers, and config repos
-- `init`: create initial local `rice` state interactively
-- `status`: show saved local `rice` state
 
 ## State
 
