@@ -15,10 +15,19 @@ The CLI is the harness. The agent skill is the workflow.
 
 ## Install The CLI
 
+Requires Node.js `>=20.12` and npm.
+
 One-off from GitHub:
 
 ```sh
 npx github:AndreiMoraru123/rice doctor
+```
+
+Install as a command:
+
+```sh
+npm install -g github:AndreiMoraru123/rice
+rice doctor
 ```
 
 Local install:
@@ -48,6 +57,8 @@ node dist/cli.js doctor
 ```sh
 npx skills add AndreiMoraru123/rice
 ```
+
+This installs the agent instructions, not the CLI command. The skill will ask the agent to check/install the CLI when it needs to inspect a machine.
 
 The skill lives at:
 

@@ -5,17 +5,49 @@ description: Use when the user wants to customize, migrate, reproduce, reset, or
 
 # rice
 
-Use the local `rice` CLI as the control plane when available.
+Use the local `rice` CLI as the control plane. If it is missing, help the user install it before doing machine customization work.
 
 ## Workflow
 
-1. Run `rice doctor` and `rice inventory --json` before recommending changes.
-2. Identify whether the machine is personal/admin or work-managed.
-3. Detect existing source-of-truth configs. Do not assume one dotfiles monorepo; standalone repos such as `~/.config/nvim` are valid.
-4. Browse official/current docs before recommending OS tools, package sources, app launchers, window managers, status bars, browser extensions, or security-sensitive integrations.
-5. Prefer plans, snapshots, verification, and reversible scripts over direct ad hoc edits.
-6. Ask before admin/sudo, registry edits, startup tasks/services, browser extensions with broad permissions, default app replacement, WM replacement, or uninstalling existing tools.
-7. Keep changes tracked in the user's config repos when practical.
+1. Check whether `rice` is available by running `rice doctor`.
+2. If `rice` is missing, follow the CLI bootstrap protocol below.
+3. Run `rice doctor` and `rice inventory --json` before recommending changes.
+4. Identify whether the machine is personal/admin or work-managed.
+5. Detect existing source-of-truth configs. Do not assume one dotfiles monorepo; standalone repos such as `~/.config/nvim` are valid.
+6. Browse official/current docs before recommending OS tools, package sources, app launchers, window managers, status bars, browser extensions, or security-sensitive integrations.
+7. Prefer plans, snapshots, verification, and reversible scripts over direct ad hoc edits.
+8. Ask before admin/sudo, registry edits, startup tasks/services, browser extensions with broad permissions, default app replacement, WM replacement, or uninstalling existing tools.
+9. Keep changes tracked in the user's config repos when practical.
+
+## CLI Bootstrap
+
+The skill and CLI are separate. Installing the skill does not install the `rice` command.
+
+If `rice` is unavailable:
+
+1. Check for Node.js and npm:
+
+   ```sh
+   node --version
+   npm --version
+   ```
+
+2. `rice` requires Node.js `>=20.12`. If Node/npm are missing or too old, ask before installing. Prefer the user's OS package manager or official Node.js instructions after checking current docs.
+
+3. For one-off use, run:
+
+   ```sh
+   npx github:AndreiMoraru123/rice doctor
+   ```
+
+4. For persistent use, run:
+
+   ```sh
+   npm install -g github:AndreiMoraru123/rice
+   rice doctor
+   ```
+
+5. Bun may be used for local development when already installed, but Node/npm are the canonical install path because `npx skills` and the packaged `rice` bin are Node-oriented.
 
 ## Default Layers
 
@@ -42,8 +74,6 @@ Use the local `rice` CLI as the control plane when available.
 - Read `references/links.md` before researching current tools; verify official docs on the web before recommending or installing.
 
 ## CLI First
-
-If `rice` is not installed and the user wants to rice a machine, offer to bootstrap it.
 
 Use:
 

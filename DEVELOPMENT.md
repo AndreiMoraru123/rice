@@ -9,6 +9,17 @@ npm run typecheck
 npm run build
 ```
 
+Bun can be used as a faster local package manager/script runner if installed:
+
+```sh
+bun install
+bun run dev -- doctor
+bun run typecheck
+bun run build
+```
+
+Node/npm remain the canonical install path because the agent skills installer uses `npx`, and the packaged CLI is a Node bin.
+
 Project layout:
 
 ```text
