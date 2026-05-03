@@ -1,6 +1,8 @@
-# rice
+# Rice ✨
 
 `rice` is a CLI for making OS customization trackable, reversible, and agent-friendly.
+
+<img width="1917" height="1078" alt="image" src="https://github.com/user-attachments/assets/b0fbc8e5-fa9a-4784-828c-0733078889b5" />
 
 Agents can make judgment calls. `rice` gives them inventory, state, verification, and eventually rollback machinery.
 
