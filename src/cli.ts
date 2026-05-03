@@ -29,7 +29,7 @@ program
     intro('rice doctor');
     printInventorySummary(inventory);
     printDoctorChecks(checks);
-    outro(checks.some((check) => check.status === 'error') ? 'Some checks need attention.' : 'Ready to rice carefully.');
+    outro(checks.some((check) => check.status === 'error') ? 'Some checks need attention.' : 'Ready to rice ✨');
   });
 
 program

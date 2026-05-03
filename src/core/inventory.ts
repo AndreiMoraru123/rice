@@ -38,6 +38,18 @@ async function tool(command: string, args: string[] = ['--version'], name = comm
   };
 }
 
+async function pacmanTool(): Promise<Tool> {
+  const available = await commandAvailable('pacman');
+  if (!available) {
+    return { name: 'pacman', available: false };
+  }
+
+  const versionOutput = await commandVersion('pacman');
+  const version = versionOutput?.match(/Pacman v[^\s]+/)?.[0] ?? versionOutput;
+
+  return { name: 'pacman', available: true, version };
+}
+
 function sanitizeGitRemote(remote: string | undefined): string | undefined {
   if (!remote) return undefined;
 
@@ -202,7 +214,7 @@ export async function collectInventory(): Promise<Inventory> {
     await tool('git'),
     await tool('brew'),
     await tool('apt'),
-    await tool('pacman'),
+    await pacmanTool(),
     await tool('dnf'),
     await tool('scoop.ps1', ['--version'], 'scoop'),
     ...windowsHostTools.packageManagers,

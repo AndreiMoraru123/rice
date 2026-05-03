@@ -6,6 +6,10 @@ function hasAvailable(tools: { available: boolean }[]): boolean {
 }
 
 export function doctorChecks(inventory: Inventory): DoctorCheck[] {
+  const availablePackageManagers = inventory.tools.packageManagers.filter(
+    (tool) => tool.name !== 'git' && tool.available,
+  );
+
   const checks: DoctorCheck[] = [
     {
       name: 'OS detected',
@@ -28,12 +32,15 @@ export function doctorChecks(inventory: Inventory): DoctorCheck[] {
     },
     {
       name: 'Package manager available',
-      status: hasAvailable(
-        inventory.tools.packageManagers.filter((tool) => tool.name !== 'git'),
-      )
+      status: hasAvailable(availablePackageManagers)
         ? 'ok'
         : 'warn',
-      detail: 'Needed for tool installation and updates.',
+      detail:
+        availablePackageManagers.length > 0
+          ? availablePackageManagers
+              .map((tool) => `${tool.name}${tool.version ? `: ${tool.version}` : ''}`)
+              .join('\n')
+          : 'No package manager detected besides git.',
     },
     {
       name: 'Config repos detected',
