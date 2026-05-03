@@ -47,8 +47,6 @@ If `rice` is unavailable:
    rice doctor
    ```
 
-5. Bun may be used for local development when already installed, but Node/npm are the canonical install path because `npx skills` and the packaged `rice` bin are Node-oriented.
-
 ## Default Layers
 
 - package manager

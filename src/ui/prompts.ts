@@ -20,8 +20,7 @@ export async function runInitFlow(): Promise<void> {
   s.start('Taking inventory');
   const inventory = await collectInventory();
   const stateDir = await ensureStateDir();
-  const inventoryPath = await writeInventory(inventory);
-  s.stop('Inventory saved');
+  s.stop('Inventory ready');
 
   printInventorySummary(inventory);
 
@@ -78,11 +77,12 @@ export async function runInitFlow(): Promise<void> {
   );
 
   if (!save) {
-    note('Inventory was collected, but state was not written.', 'Stopped');
+    note('Inventory was collected in memory, but nothing was written.', 'Stopped');
     outro('No changes made.');
     return;
   }
 
+  const inventoryPath = await writeInventory(inventory);
   const now = new Date().toISOString();
   const state: RiceState = {
     schemaVersion: 1,
