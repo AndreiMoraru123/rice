@@ -14,7 +14,8 @@
     "dev": "tsx src/cli.ts",
     "build": "tsup",
     "typecheck": "tsc --noEmit",
-    "start": "tsx src/cli.ts"
+    "start": "tsx src/cli.ts",
+    "prepare": "npm run build"
   },
   "keywords": [
     "dotfiles",

@@ -4,7 +4,24 @@
 
 Agents can make judgment calls. `rice` gives them inventory, state, verification, and eventually rollback machinery.
 
-## Install
+## What This Is
+
+`rice` is two things:
+
+- a CLI humans and agents can run
+- an agent skill that teaches agents how to use the CLI and respect inventory, state, verification, and rollback
+
+The CLI is the harness. The agent skill is the workflow.
+
+## Install The CLI
+
+One-off from GitHub:
+
+```sh
+npx github:AndreiMoraru123/rice doctor
+```
+
+Local install:
 
 ```sh
 git clone https://github.com/AndreiMoraru123/rice.git
@@ -24,6 +41,18 @@ Without `npm link`, use:
 
 ```sh
 node dist/cli.js doctor
+```
+
+## Install The Agent Skill
+
+```sh
+npx skills add AndreiMoraru123/rice --skill rice
+```
+
+The skill lives at:
+
+```text
+skills/rice/SKILL.md
 ```
 
 ## Commands
